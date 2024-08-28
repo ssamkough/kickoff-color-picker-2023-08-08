@@ -2,9 +2,16 @@ import knex from "../../../clients/knex";
 
 export default async (req, res) => {
   if (req.method === "GET") {
-    const palettes = await knex("palettes");
-
-    res.status(200).json(palettes);
+    if (req.query?.searchStr) {
+      const palettes = await knex("palettes").whereLike(
+        "name",
+        `%${req.query.searchStr}%`
+      );
+      res.status(200).json(palettes);
+    } else {
+      const palettes = await knex("palettes");
+      res.status(200).json(palettes);
+    }
   } else if (req.method === "POST") {
     const { name, color_one, color_two, color_three, color_four, color_five } =
       req.body.body;

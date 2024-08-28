@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import CurrentColor from "../components/palettes/CurrentColor";
 import Picker from "../components/palettes/Picker";
 import SavedPalettes from "../components/palettes/SavedPalettes";
+import { useDebounce } from "../hooks/useDebounce";
 import { rgbStringFromColor } from "../utils/palette";
 import { Color, Palette } from "./types";
 
@@ -11,11 +12,18 @@ const Home = () => {
   const [paletteName, setPaletteName] = useState<string>("");
   const [palette, setPalette] = useState<Color[]>([]);
   const [paletteId, setPaletteId] = useState<number | null>();
+  const [searchStr, setSearchStr] = useState("");
+
+  const debouncedStr = useDebounce(searchStr);
 
   // get
   useEffect(() => {
     const fetchPalettes = async () => {
-      const { status, data } = await axios.get("/api/palettes");
+      const URL = `/api/palettes${
+        debouncedStr !== "" ? `?searchStr=${debouncedStr}` : ""
+      }`;
+
+      const { status, data } = await axios.get(URL);
 
       if (status === 200) {
         setSavedPalettes(data);
@@ -25,7 +33,7 @@ const Home = () => {
     };
 
     fetchPalettes();
-  }, [setSavedPalettes, axios]);
+  }, [debouncedStr, setSavedPalettes, axios]);
 
   // update
   useEffect(() => {
@@ -113,17 +121,15 @@ const Home = () => {
       </div>
       <hr style={{ margin: 20 }} />
       <h2>Saved Palettes</h2>
-      {savedPalettes.length > 0 ? (
-        <SavedPalettes
-          paletteName={paletteName}
-          palette={palette}
-          savedPalettes={savedPalettes}
-          setSavedPalettes={setSavedPalettes}
-          setPaletteId={setPaletteId}
-        />
-      ) : (
-        "No currently saved palettes!"
-      )}
+      <SavedPalettes
+        paletteName={paletteName}
+        palette={palette}
+        savedPalettes={savedPalettes}
+        setSavedPalettes={setSavedPalettes}
+        setPaletteId={setPaletteId}
+        searchStr={searchStr}
+        setSearchStr={setSearchStr}
+      />
     </div>
   );
 };
