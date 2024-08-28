@@ -6,7 +6,7 @@ a color palette is an object with 5 colors. you can create different palettes ba
 
 here is a video of me going through the flow things:
 
-// TODO: put video url
+(https://youtu.be/5d1FAvvABe0)[https://youtu.be/5d1FAvvABe0]
 
 ## notes
 
