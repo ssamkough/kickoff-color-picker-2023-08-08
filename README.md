@@ -1,3 +1,33 @@
+# Kickoff Color Palettes (by sammy) 🎨
+
+basic, simple, responsive crud app that allows you to manage your color palettes
+
+a color palette is an object with 5 colors. you can create different palettes based off of different things (i.e. the seasons, ur mood, etc.)
+
+here is a video of me going through the flow things:
+
+## notes
+
+### sqlite
+
+to access sqlite CLI: `sqlite3`
+
+to access sqlite db: `.open database.sqlite` (`database.sqlite` is name of sqlite file)
+
+to see all tables: `.tables`
+
+to drop table: `DROP TABLE [table-name];`
+
+## next steps
+
+- better database schema (using `colors` table instead of five different color columns)
+
+- using tailwind css instead of `style` property
+
+- cleaner ui
+
+---
+
 # Instructions
 
 ## Exercise
@@ -59,17 +89,3 @@ There's a lot to do. Don't sweat the details. If you do finish early, take your 
 - yarn create-migration -- {{migration_name}}
 - yarn run-migrations
 - note: you can drop the database and start over by deleting database.sqlite
-
----
-
-# Notes
-
-## sqlite
-
-to access sqlite CLI: `sqlite3`
-
-to access sqlite db: `.open database.sqlite` (`database.sqlite` is name of sqlite file)
-
-to see all tables: `.tables`
-
-to drop table: `DROP TABLE [table-name];`
