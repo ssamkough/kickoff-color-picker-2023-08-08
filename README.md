@@ -6,6 +6,8 @@ a color palette is an object with 5 colors. you can create different palettes ba
 
 here is a video of me going through the flow things:
 
+https://youtu.be/AoYhdhfYcyg
+
 ## notes
 
 ### sqlite
