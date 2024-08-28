@@ -1,7 +1,7 @@
 import Welcome from "../components/welcome";
 
-const Home = () => {
+const WelcomePage = () => {
   return <Welcome />;
 };
 
-export default Home;
+export default WelcomePage;

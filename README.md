@@ -59,3 +59,17 @@ There's a lot to do. Don't sweat the details. If you do finish early, take your 
 - yarn create-migration -- {{migration_name}}
 - yarn run-migrations
 - note: you can drop the database and start over by deleting database.sqlite
+
+---
+
+# Notes
+
+## sqlite
+
+to access sqlite CLI: `sqlite3`
+
+to access sqlite db: `.open database.sqlite` (`database.sqlite` is name of sqlite file)
+
+to see all tables: `.tables`
+
+to drop table: `DROP TABLE [table-name];`
